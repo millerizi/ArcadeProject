@@ -1,0 +1,10 @@
+Websites:
+http://en.wikipedia.org/wiki/Ternary_operation
+http://jsbeautifier.org/
+http://stackoverflow.com/
+http://www.w3schools.com/
+http://www.html5canvastutorials.com/tutorials/html5-canvas-element/
+http://www.lostdecadegames.com/how-to-make-a-simple-html5-canvas-game/
+http://jlongster.com/Making-Sprite-based-Games-with-Canvas
+http://www.html5rocks.com/en/tutorials/canvas/notearsgame/
+www.udacity.com
