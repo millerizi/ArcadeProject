@@ -1,3 +1,5 @@
+'use strict';
+
 var Enemy = function() {
     //This is the range left to right enemy can be within
     this.X = [-50, 508];
@@ -8,13 +10,13 @@ var Enemy = function() {
     //This is the image that will be used as enemy
     this.sprite = 'images/enemy-bug.png';
     this.reset();
-}
+};
 
 //This gets the Random Y axis for the enemies using random() and multiplying by Y
 //Length and then rounding to lowest integer
 Enemy.prototype.RandomYAxis = function() {
         return this.Y[Math.floor(Math.random() * this.Y.length)];
-    }
+    };
     //Used to determine random speed of Enemies
 Enemy.prototype.RandomSpeed = function() {
     // create two variables using array items for min and max speed
@@ -23,7 +25,7 @@ Enemy.prototype.RandomSpeed = function() {
     //take random number 0.... multply my diff of max and min speed then add minspeed
     //and then round to lowest interger
     return Math.floor(Math.random() * (maxSpeed - minSpeed)) + minSpeed;
-}
+};
 
 //This is how the enemy knows to reset and start from left to right and at what speed
 Enemy.prototype.reset = function() {
@@ -33,7 +35,7 @@ Enemy.prototype.reset = function() {
     this.y = this.RandomYAxis();
     //this speed will equal the number created in Enemy.prototype.RandomSpeed
     this.speed = this.RandomSpeed();
-}
+};
 
 Enemy.prototype.update = function(dt) {
         var maxPos = this.X[1]; //[1] is the second item in X array that will be used
@@ -42,11 +44,11 @@ Enemy.prototype.update = function(dt) {
         if (this.x > maxPos) { //If current x axys is greater that max Pos (Second item in array) reset enemy
             this.reset();
         }
-    }
+    };
     //Draws enemy based on logic
 Enemy.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //Creates the player using an array so a different charachter each time played(Random)
 var Player = function() {
@@ -61,18 +63,18 @@ var Player = function() {
     this.X = [-45, 402];
     this.PlayerYAxis = [-20, 380];
     this.reset();
-}
+};
 
 //This is where the character is placed on screen when reset, this will be random
 Player.prototype.reset = function() {
     this.x = 200;
     this.y = this.PlayerYAxis[1];
-}
+};
 
 //This is calling the function where we validate if any collisions took place
 Player.prototype.update = function() {
     this.checkCollisions();
-}
+};
 
 //Function determines what to do if there is a collision on the page
 Player.prototype.checkCollisions = function() {
@@ -93,12 +95,12 @@ Player.prototype.checkCollisions = function() {
             }
         });
     }
-}
+};
 
 //Draws the player onto the screen.
 Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
-}
+};
 
 //When button is presssed we validated the user is still on screen and will go off
 //If they would go off screen nothing will happen and player will stay on screen
@@ -117,7 +119,7 @@ Player.prototype.handleInput = function(key) {
         //This statement look at the y axys and then if statement is true will move down 80
         this.y += (this.y + 80 > this.PlayerYAxis[1]) ? 0 : 80;
     }
-}
+};
 
 //Browser listens for the keys below to be pressed and then stores as e in function, which is used to handle input
 document.addEventListener('keyup', function(e) {
@@ -132,7 +134,7 @@ document.addEventListener('keyup', function(e) {
 });
 
 //disables arrow keys from scrolling window in game.
-window.addEventListener("keydown", function(e) {
+window.addEventListener('keydown', function(e) {
     // space and arrow keys
     if ([37, 38, 39, 40].indexOf(e.keyCode) > -1) {
         e.preventDefault();
